@@ -15,6 +15,20 @@ pub fn generate_int32_arrow_array(n: usize) -> PrimitiveArray<Int32Type> {
     builder.finish()
 }
 
+pub fn generate_int32_arrow_array_range(
+    n: usize,
+    lower: i32,
+    upper: i32,
+) -> PrimitiveArray<Int32Type> {
+    let mut builder = Int32Array::builder(n);
+    let mut rng = rand::thread_rng();
+    for _ in 0..=n {
+        builder.append_value(rng.gen_range(lower..upper));
+    }
+
+    builder.finish()
+}
+
 pub fn generate_record_batch(cols: &[&str], count_rows: usize) -> anyhow::Result<RecordBatch> {
     let mut columns = Vec::new();
     let mut schema_builder = SchemaBuilder::new();
