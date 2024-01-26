@@ -9,3 +9,11 @@ edition = "2021"
 anyhow = "1.0.79"
 arrow = "50.0.0"
 parquet = "50.0.0"
+rand = "0.8.5"
+
+[dev-dependencies]
+criterion = { version = "0.5.1", features = ["html_reports"] }
+
+[[bench]]
+name = "filter_project0"
+harness = false
