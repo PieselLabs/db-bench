@@ -40,10 +40,6 @@ fn fusion_by_row(record_batch: &RecordBatch) -> anyhow::Result<RecordBatch> {
         .as_primitive::<Int32Type>()
         .values();
 
-    for i in 0..record_batch.num_rows() {
-        if column1[i] > 12 && column6[i] < 4 {}
-    }
-
     let mut sel_index = 0;
 
     for i in 0..record_batch.num_rows() {

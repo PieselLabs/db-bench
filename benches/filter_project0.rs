@@ -41,7 +41,7 @@ pub fn filter_columns_random_bench(c: &mut Criterion) {
     .unwrap();
 
     c.bench_function("filter_columns_random_bench", move |b| {
-        b.iter(|| filter_columns(black_box(&record_batch)))
+        b.iter(|| black_box(filter_columns(&record_batch)))
     });
 }
 
@@ -115,7 +115,7 @@ pub fn select_columns_random_bench(c: &mut Criterion) {
     let sel = filter_columns(black_box(&record_batch));
 
     c.bench_function("select_columns_random_bench", move |b| {
-        b.iter(|| select_columns(&record_batch, &sel))
+        b.iter(|| black_box(select_columns(&record_batch, &sel)))
     });
 }
 
